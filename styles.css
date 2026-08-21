@@ -1,0 +1,1187 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+:root {
+    /* Modo Claro (Predeterminado - Estándar Papel Académico APA) */
+    --bg-base: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F1F5F9;
+    --bg-highlight: #FEF9C3;
+
+    /* Bordes y Líneas */
+    --border-color: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --border-accent: #0D6E57;
+
+    /* Identidad de Color Institucional (No Genérica de IA) */
+    --brand-oxford: #0F2942;
+    /* Azul Oxford Académico */
+    --brand-oxford-light: #1E3A5F;
+    --brand-emerald: #0D6E57;
+    /* Verde Esmeralda Institucional */
+    --brand-emerald-light: #059669;
+    --brand-gold: #B4890B;
+    /* Oro Viejo / Pergamino Universitario */
+    --brand-gold-soft: rgba(180, 137, 11, 0.12);
+    --brand-amber: #D97706;
+
+    /* Colores de Tipografía */
+    --text-heading: #0F172A;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    --text-light: #94A3B8;
+    --text-inverse: #FFFFFF;
+
+    /* Estilos de Diagramas vectoriales (SVG HD) */
+    --diagram-box-bg: #0B1728;
+    --diagram-box-border: #1E3A5F;
+    --diagram-card-bg: #132438;
+    --diagram-text: #E2E8F0;
+    --diagram-accent-cyan: #38BDF8;
+    --diagram-accent-gold: #F59E0B;
+    --diagram-accent-green: #34D399;
+
+    /* Fuentes Normas APA y Modernidad */
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Cinzel', 'Merriweather', serif;
+    --font-mono: 'Fira Code', monospace;
+
+    /* Elevación y Transiciones */
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12);
+    --shadow-gold: 0 0 15px rgba(180, 137, 11, 0.2);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modo Oscuro (Pizarra Ejecutiva) */
+[data-theme="dark"] {
+    --bg-base: #0B131F;
+    --bg-surface: #121F33;
+    --bg-subtle: #1A2C45;
+    --bg-highlight: #3B3008;
+
+    --border-color: #233957;
+    --border-strong: #33527A;
+    --border-accent: #10B981;
+
+    --brand-oxford: #1E3A5F;
+    --brand-emerald: #10B981;
+    --brand-gold: #D4AF37;
+    --brand-gold-soft: rgba(212, 175, 55, 0.18);
+
+    --text-heading: #F8FAFC;
+    --text-body: #CBD5E1;
+    --text-muted: #94A3B8;
+    --text-light: #64748B;
+}
+
+/* Reset y Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-base);
+    color: var(--text-body);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+/* Selección de texto estilizada APA */
+::selection {
+    background-color: var(--brand-gold-soft);
+    color: var(--brand-oxford);
+}
+
+/* ==========================================================================
+   NAVEGACIÓN SUPERIOR INSTITUCIONAL
+   ========================================================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(15, 41, 66, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 3px solid var(--brand-gold);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-smooth);
+}
+
+[data-theme="dark"] .navbar {
+    background-color: rgba(11, 19, 31, 0.96);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.75rem;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.logo-badge {
+    background: linear-gradient(135deg, var(--brand-gold), #946C00);
+    color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(180, 137, 11, 0.3);
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.04em;
+}
+
+
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #E2E8F0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--brand-gold);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Controladores de la barra superior */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    padding: 0.45rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+    background: var(--brand-gold);
+    color: var(--brand-oxford);
+    border-color: var(--brand-gold);
+}
+
+.mobile-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   ESTRUCTURA PRINCIPAL Y SIDEBAR DE INDICE (TOC)
+   ========================================================================== */
+.layout-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 2rem;
+}
+
+.sidebar {
+    position: sticky;
+    top: 5rem;
+    height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+}
+
+.sidebar-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.sidebar-card h3 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--brand-oxford);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 2px solid var(--brand-emerald);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+[data-theme="dark"] .sidebar-card h3 {
+    color: var(--brand-gold);
+}
+
+.toc-list {
+    list-style: none;
+}
+
+.toc-list li {
+    margin-bottom: 0.35rem;
+}
+
+.toc-list a {
+    text-decoration: none;
+    color: var(--text-body);
+    font-size: 0.84rem;
+    display: block;
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    line-height: 1.4;
+}
+
+.toc-list a:hover {
+    background-color: var(--bg-subtle);
+    color: var(--brand-emerald);
+}
+
+.toc-list a.active {
+    background-color: var(--brand-emerald);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.toc-sublist {
+    list-style: none;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+}
+
+.toc-sublist a {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* Main Content Area */
+.main-content {
+    min-width: 0;
+}
+
+/* ==========================================================================
+   HERO BANNER ENCABEZADO ACADÉMICO APA
+   ========================================================================== */
+.hero-banner {
+    background: linear-gradient(135deg, var(--brand-oxford) 0%, #173757 100%);
+    border-radius: var(--radius-lg);
+    padding: 2.75rem 2.5rem;
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    border-left: 6px solid var(--brand-gold);
+}
+
+.hero-badge-apa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--brand-gold-soft);
+    border: 1px solid var(--brand-gold);
+    color: var(--brand-gold);
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.25rem;
+}
+
+.hero-banner h1 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    line-height: 1.3;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: #CBD5E1;
+    max-width: 850px;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.hero-meta-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.85rem;
+    color: #E2E8F0;
+}
+
+.hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hero-meta-item i {
+    color: var(--brand-gold);
+}
+
+/* ==========================================================================
+   SECCIÓN 1: FICHA DE DATOS GENERALES DEL CURSO
+   ========================================================================== */
+.card-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.section-header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    color: var(--brand-oxford);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+[data-theme="dark"] .section-title {
+    color: var(--brand-gold);
+}
+
+
+.course-blueprint-box {
+    background: linear-gradient(to right, var(--bg-surface), var(--bg-subtle));
+    border-left: 5px solid var(--brand-emerald);
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.course-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.course-item .label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--brand-emerald);
+    margin-bottom: 0.3rem;
+}
+
+.course-item .value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+
+/* ==========================================================================
+   SECCIÓN 2: MARCO TEÓRICO & CITAS APA EN TEXTO
+   ========================================================================== */
+.paragraph {
+    font-family: var(--font-sans);
+    font-size: 0.98rem;
+    color: var(--text-body);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+}
+
+/* Formato Cita APA interactiva en texto */
+
+
+[data-theme="dark"] .apa-cite {
+    color: var(--brand-gold);
+}
+
+
+.hotel-case-banner {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-strong);
+    border-left: 4px solid var(--brand-oxford);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.hotel-case-banner i {
+    font-size: 1.6rem;
+    color: var(--brand-gold);
+    margin-top: 0.2rem;
+}
+
+.hotel-case-banner h4 {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--brand-oxford);
+    margin-bottom: 0.35rem;
+}
+
+[data-theme="dark"] .hotel-case-banner h4 {
+    color: var(--brand-gold);
+}
+
+/* Abstract Box APA */
+.apa-abstract-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem 1.75rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.75rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.apa-abstract-box h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--brand-oxford);
+    text-align: center;
+    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+[data-theme="dark"] .apa-abstract-box h3 {
+    color: var(--brand-gold);
+}
+
+/* ==========================================================================
+   TARJETAS DE PATRONES Y VENTAJAS / DESVENTAJAS
+   ========================================================================== */
+.diagram-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.diagram-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.diagram-badge {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+}
+
+.badge-structural {
+    background: rgba(13, 110, 87, 0.12);
+    color: var(--brand-emerald);
+    border: 1px solid var(--brand-emerald);
+}
+
+.badge-behavioral {
+    background: rgba(180, 137, 11, 0.12);
+    color: var(--brand-gold);
+    border: 1px solid var(--brand-gold);
+}
+
+.diagram-box {
+    background: var(--diagram-box-bg);
+    border: 1px solid var(--diagram-box-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 1.25rem 0;
+    box-shadow: var(--shadow-md);
+}
+
+.diagram-header-bar {
+    background: rgba(15, 41, 66, 0.9);
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--diagram-box-border);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: #94A3B8;
+}
+
+.diagram-header-bar .btn-zoom {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.diagram-header-bar .btn-zoom:hover {
+    background: var(--brand-gold);
+    color: var(--brand-oxford);
+}
+
+.svg-wrapper {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.svg-wrapper svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.figure-caption {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-surface);
+}
+
+/* Grilla de Ventajas y Desventajas */
+.pro-con-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.pro-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--brand-emerald);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.pro-card h4 {
+    color: var(--brand-emerald);
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.con-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-top: 4px solid #EF4444;
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.con-card h4 {
+    color: #EF4444;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.spec-list {
+    list-style: none;
+    margin: 0.5rem 0;
+}
+
+.spec-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.5;
+}
+
+.spec-list li::before {
+    content: "•";
+    color: var(--brand-emerald);
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: -0.1rem;
+}
+
+/* ==========================================================================
+   SECCIÓN 6: REFERENCIAS BIBLIOGRÁFICAS (NORMAS APA 7.ª EDICIÓN)
+   ========================================================================== */
+.apa-references-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+}
+
+.apa-ref-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--brand-oxford);
+    text-align: center;
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--brand-gold);
+}
+
+[data-theme="dark"] .apa-ref-title {
+    color: var(--brand-gold);
+}
+
+.apa-reference-item {
+    padding-left: 2.5rem;
+    text-indent: -2.5rem;
+    font-family: var(--font-serif);
+    font-size: 0.94rem;
+    line-height: 1.85;
+    color: var(--text-body);
+    margin-bottom: 1.5rem;
+    word-break: break-word;
+    position: relative;
+    transition: background-color var(--transition-smooth);
+}
+
+.apa-reference-item.highlighted-ref {
+    background-color: var(--bg-highlight);
+    border-left: 4px solid var(--brand-gold);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+.apa-reference-item a {
+    color: var(--brand-emerald);
+    text-decoration: underline;
+}
+
+
+
+.cite-this-blog-card {
+    background: linear-gradient(135deg, var(--bg-subtle), var(--bg-surface));
+    border: 1.5px dashed var(--brand-gold);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.75rem;
+    margin-top: 2rem;
+}
+
+.cite-this-blog-card h4 {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--brand-oxford);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+[data-theme="dark"] .cite-this-blog-card h4 {
+    color: var(--brand-gold);
+}
+
+.cite-box-content {
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 0.85rem 1.1rem;
+    border-radius: var(--radius-sm);
+    margin: 0.6rem 0;
+    word-break: break-all;
+    color: var(--text-heading);
+}
+
+/* ==========================================================================
+   MODALES (AMPLIACIÓN DE DIAGRAMAS & EDITAR DATOS DEL CURSO)
+   ========================================================================== */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(11, 19, 31, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.modal-backdrop.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 1050px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    animation: modalSlideUp 0.25s ease-out;
+}
+
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    background: var(--brand-oxford);
+    color: #FFFFFF;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--brand-gold);
+}
+
+.modal-header h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+    color: var(--brand-gold);
+}
+
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    background: var(--diagram-box-bg);
+}
+
+.modal-body svg {
+    width: 100%;
+    height: auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+
+.form-input {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    padding: 0.6rem 0.85rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--brand-emerald);
+    box-shadow: 0 0 0 3px rgba(13, 110, 87, 0.15);
+}
+
+.modal-footer-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-surface);
+}
+
+.btn-primary {
+    background: var(--brand-emerald);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+    background: #095341;
+}
+
+.btn-secondary {
+    background: var(--bg-subtle);
+    color: var(--text-body);
+    border: 1px solid var(--border-strong);
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.toast-notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--brand-oxford);
+    color: #FFFFFF;
+    border-left: 4px solid var(--brand-gold);
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    font-size: 0.88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    z-index: 3000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background: var(--brand-oxford);
+    color: var(--brand-gold);
+    border: 1px solid var(--brand-gold);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--brand-gold);
+    color: var(--brand-oxford);
+}
+
+@media (max-width: 1024px) {
+    .layout-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+        position: fixed;
+        top: 4.5rem;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 4.5rem);
+        z-index: 999;
+        background: var(--bg-surface);
+        padding: 1.5rem;
+    }
+
+    .sidebar.mobile-open {
+        display: block;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .hero-banner h1 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .card-section {
+        padding: 1.25rem 1rem;
+    }
+
+    .hero-banner {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .apa-reference-item {
+        padding-left: 1.5rem;
+        text-indent: -1.5rem;
+        font-size: 0.88rem;
+    }
+}
+
+/* ==========================================================================
+   NUEVAS CLASES DE REFACTORIZACIÓN (CERO CÓDIGO ESPAGUETI INLINE)
+   ========================================================================== */
+.academic-subheading {
+    font-family: var(--font-serif);
+    color: var(--brand-oxford);
+    margin: 1.25rem 0 0.75rem 0;
+}
+
+[data-theme="dark"] .academic-subheading {
+    color: var(--text-heading);
+}
+
+.academic-subheading-lg {
+    font-family: var(--font-serif);
+    color: var(--brand-oxford);
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+[data-theme="dark"] .academic-subheading-lg {
+    color: var(--text-heading);
+}
+
+.caption-note {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.course-grid-mb {
+    margin-bottom: 1.5rem;
+}
+
+.course-grid-mb-lg {
+    margin-bottom: 1.75rem;
+}
+
+.course-item-emerald {
+    border-top: 4px solid var(--brand-emerald);
+}
+
+.course-item-gold {
+    border-top: 4px solid var(--brand-gold);
+}
+
+.course-item-oxford {
+    border-top: 4px solid var(--brand-oxford);
+}
+
+.course-value-normal {
+    font-size: 0.88rem;
+    font-weight: normal;
+    margin-top: 0.4rem;
+}
+
+.course-value-compact {
+    font-size: 0.88rem;
+    font-weight: normal;
+    margin-top: 0.3rem;
+}
+
+.spec-list-mb {
+    margin-bottom: 1.5rem;
+}
+
+.cite-card-bordered {
+    border-style: solid;
+    margin-top: 1rem;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.text-emerald {
+    color: var(--brand-emerald);
+}
+
+.text-gold {
+    color: var(--brand-gold);
+}
+
+.text-body-sm {
+    font-size: 0.88rem;
+    color: var(--text-body);
+}
+
+.text-muted-sm {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.modal-content-lg {
+    max-width: 680px;
+}
+
+.modal-bg-surface {
+    background: var(--bg-surface);
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem !important;
+}
+
+.mt-2 {
+    margin-top: 0.5rem !important;
+}
