@@ -46,13 +46,9 @@ function updateThemeBtnIcon(btn, theme) {
    2. FICHA GENERAL DE DATOS DEL CURSO (PERSONALIZACIÓN DINÁMICA)
    ========================================================================== */
 const DEFAULT_COURSE_DATA = {
-    universidad: 'Universidad de San Carlos de Guatemala',
-    facultad: 'Facultad de Ingeniería',
-    carrera: 'Ingeniería en Ciencias y Sistemas',
     curso: 'Análisis y Diseño de Sistemas II',
-    catedratico: 'Ing. Carlos Ramos',
-    estudiante: 'Estudiante Profesional',
-    carne: '2026-990412',
+    
+    estudiante: 'Miguel A.',
     ciclo: 'Primer Semestre 2026',
     fecha: 'Agosto 2026'
 };
