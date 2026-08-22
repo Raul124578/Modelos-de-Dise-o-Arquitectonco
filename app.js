@@ -1,6 +1,3 @@
-/ ==========================================================================
-// BLOG ACADÉMICO PROFESIONAL UML (NORMAS APA 7.ª EDICIÓN) - LÓGICA DE INTERACCIÓN
-// ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
