@@ -1,4 +1,4 @@
-// ==========================================================================
+/ ==========================================================================
 // BLOG ACADÉMICO PROFESIONAL UML (NORMAS APA 7.ª EDICIÓN) - LÓGICA DE INTERACCIÓN
 // ==========================================================================
 
@@ -43,12 +43,14 @@ function updateThemeBtnIcon(btn, theme) {
 }
 
 /* ==========================================================================
-   2. FICHA GENERAL DE DATOS DEL CURSO (PERSONALIZACIÓN DINÁMICA)
+   2. FICHA GENERAL DE DATOS DEL CURSO 
    ========================================================================== */
 const DEFAULT_COURSE_DATA = {
+    facultad: 'Facultad de Ingeniería',
+    carrera: 'Ingeniería en Ciencias y Sistemas',
     curso: 'Análisis y Diseño de Sistemas II',
-    
-    estudiante: 'Miguel A.',
+
+    estudiante: 'Miguel A',
     ciclo: 'Primer Semestre 2026',
     fecha: 'Agosto 2026'
 };
@@ -294,7 +296,7 @@ function initActionDelegation() {
         if (!actionBtn) return;
 
         const action = actionBtn.getAttribute('data-action');
-        
+
         if (action === 'open-edit-course') {
             openEditCourseModal();
         } else if (action === 'close-edit-course') {
@@ -321,4 +323,5 @@ function initActionDelegation() {
         });
     }
 }
+
 
